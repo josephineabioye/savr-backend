@@ -21,4 +21,8 @@ public class AccountController {
     public double balance() {
         return accountService.getBalance();
     }
+    @GetMapping
+    public String home() {
+        return "Savr API is running";
+    }
 }
