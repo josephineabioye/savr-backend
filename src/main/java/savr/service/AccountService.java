@@ -14,6 +14,12 @@ public class AccountService {
     public void deposit(double amount) {
         account.deposit(amount);
     }
+    public void withdraw(double amount) {
+        account.withdraw(amount);
+    }
+    public String transferToPocket(String pocketName, double amount) {
+        return account.transferToPocket(pocketName, amount);
+    }
     public double getBalance() {
         return account.getAccountBalance();
     }
