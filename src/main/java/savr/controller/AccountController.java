@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import savr.service.AccountService;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/api/")
 
 public class AccountController {
     private final AccountService accountService;
