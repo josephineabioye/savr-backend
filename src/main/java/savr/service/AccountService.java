@@ -8,16 +8,21 @@ import java.util.List;
 @Service
 public class AccountService {
     private Account account;
-    public AccountService() {
+    private final TransactionService transactionService;
+    public AccountService(TransactionService transactionService) {
     this.account  = new Account("Main", 0);
+        this.transactionService = transactionService;
     }
     public void deposit(double amount) {
         account.deposit(amount);
+        transactionService.logTransaction("DEPOSIT", amount);
     }
     public void withdraw(double amount) {
         account.withdraw(amount);
+        transactionService.logTransaction("WITHDRAW", amount);
     }
     public String transferToPocket(String pocketName, double amount) {
+        transactionService.logTransaction("TRANSFER", amount, pocketName);
         return account.transferToPocket(pocketName, amount);
     }
     public double getBalance() {

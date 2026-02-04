@@ -39,4 +39,11 @@ public class Transaction {
     public String toString() {
         return type + "|" + amount + "|" + description + "|" + dateTime;
     }
+    public void setTransactionType(){
+        this.type = type;
+    }
+    public void setTransactionAmount() {
+        this.amount = amount;
+    }
 }
+
