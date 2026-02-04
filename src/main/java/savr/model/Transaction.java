@@ -16,6 +16,7 @@ public class Transaction {
     private double amount;
     private String description;
     private LocalDateTime dateTime;
+    private String pocketName;
 
     public Transaction(String type, double amount, String description) {
         this.type = type;
@@ -24,11 +25,21 @@ public class Transaction {
         this.dateTime = LocalDateTime.now();
     }
 
+    public Transaction(String type, String pocketName, double amount) {
+        this.type = type;
+        this.amount = amount;
+        this.pocketName = pocketName;
+        this.dateTime = LocalDateTime.now();
+    }
+
     public String getTransactionType(){
         return type;
     }
     public double getTransactionAmount() {
         return amount;
+    }
+    public String getPocketName() {
+        return pocketName;
     }
     public String getTransactionDescription() {
         return description;
@@ -39,6 +50,7 @@ public class Transaction {
     public String toString() {
         return type + "|" + amount + "|" + description + "|" + dateTime;
     }
+
     public void setTransactionType(){
         this.type = type;
     }
