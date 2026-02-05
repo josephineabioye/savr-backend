@@ -57,5 +57,8 @@ public class Transaction {
     public void setTransactionAmount() {
         this.amount = amount;
     }
+    public void setPocketName() {
+        this.pocketName = pocketName;
+    }
 }
 
