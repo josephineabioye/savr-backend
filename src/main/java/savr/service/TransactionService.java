@@ -13,19 +13,21 @@ public class TransactionService {
     public TransactionService(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
     }
-    public void logTransaction(String type, double amount, String pocketName) {
-        Transaction tx = new Transaction();
-        tx.setTransactionType(type);
-        tx.setTransactionAmount(amount);
-        if(pocketName != null && !pocketName.isEmpty()) {
-            tx.setPocketName(pocketName);
+    public void logTransaction(String type, String description, double amount) {
+        Transaction tx = new Transaction(type, amount, description);
+        tx.setTransactionType();
+        tx.setTransactionAmount();
+        if(tx.getPocketName() != null && !tx.getPocketName().isEmpty()) {
+            tx.setPocketName();
         }
         transactionRepository.save(tx);
     }
-    public void logTransaction(String type, double amount) {
-        Transaction tx = new Transaction();
-        tx.setTransactionType(type);
-        tx.setTransactionAmount(amount);
+    public void logTransaction(String type, double amount, String description) {
+        Transaction tx = new Transaction(description, amount, type);
+        transactionRepository.save(tx);
+    }
+    public void logTransaction(String description, double amount ) {
+        Transaction tx = new Transaction("DEPOSIT", amount, description);
         transactionRepository.save(tx);
     }
 
