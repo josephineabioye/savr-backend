@@ -11,12 +11,13 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String type;
     private double amount;
     private String description;
     private LocalDateTime dateTime;
     private String pocketName;
+
+    public Transaction() {}
 
     public Transaction(String type, double amount, String description) {
         this.type = type;
@@ -25,13 +26,7 @@ public class Transaction {
         this.dateTime = LocalDateTime.now();
     }
 
-    public Transaction(String type, String pocketName, double amount) {
-        this.type = type;
-        this.amount = amount;
-        this.pocketName = pocketName;
-        this.dateTime = LocalDateTime.now();
-    }
-
+    public Long getId() { return id; }
     public String getTransactionType(){
         return type;
     }
@@ -51,13 +46,13 @@ public class Transaction {
         return type + "|" + amount + "|" + description + "|" + dateTime;
     }
 
-    public void setTransactionType(){
+    public void setTransactionType(String type){
         this.type = type;
     }
-    public void setTransactionAmount() {
+    public void setTransactionAmount(double amount) {
         this.amount = amount;
     }
-    public void setPocketName() {
+    public void setPocketName(String pocketName) {
         this.pocketName = pocketName;
     }
 }
