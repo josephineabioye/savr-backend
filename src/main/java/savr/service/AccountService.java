@@ -22,7 +22,7 @@ public class AccountService {
         transactionService.logTransaction("WITHDRAW", amount);
     }
     public String transferToPocket(String pocketName, double amount) {
-        transactionService.logTransaction("TRANSFER", amount, pocketName);
+        transactionService.logPocketTransaction("TRANSFER", amount, pocketName);
         return account.transferToPocket(pocketName, amount);
     }
     public double getBalance() {

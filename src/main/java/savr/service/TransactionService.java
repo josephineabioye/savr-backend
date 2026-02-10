@@ -13,6 +13,11 @@ public class TransactionService {
     public TransactionService(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
     }
+    public void logTransaction(String type, double amount) {
+        String description = type.substring(0, 1).toUpperCase() + type.substring(1).toLowerCase() + " transaction";
+        Transaction tx = new Transaction(type, amount, description);
+        transactionRepository.save(tx);
+    }
     public void logPocketTransaction(String type, double amount, String description) {
         Transaction tx = new Transaction(type, amount, description);
         tx.setTransactionType(type);
@@ -21,12 +26,9 @@ public class TransactionService {
             tx.setPocketName(tx.getPocketName());
         }
         transactionRepository.save(tx);
-
-
     }
 
-
     public List<Transaction> getAllTransactions() {
-        return transactionRepository.findAllByOrderByCreatedAtDesc();
+        return transactionRepository.findAllByOrderByDateTimeDesc();
     }
 }

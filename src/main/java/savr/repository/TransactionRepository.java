@@ -5,5 +5,5 @@ import savr.model.Transaction;
 import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    List<Transaction> findAllByOrderByCreatedAtDesc();
+    List<Transaction> findAllByOrderByDateTimeDesc();
 }
