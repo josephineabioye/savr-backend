@@ -18,6 +18,14 @@ public class AccountService {
         transactionService.logTransaction("DEPOSIT", amount);
     }
     public void withdraw(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than zero");
+        }
+
+        if (account.getAccountBalance() < amount) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
+
         account.withdraw(amount);
         transactionService.logTransaction("WITHDRAW", amount);
     }
